@@ -84,13 +84,11 @@ public class Ventana extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtAJava = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
         btnTraducirAJava = new javax.swing.JButton();
-        btnCompilarYcorrer1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        panel1.setBackground(new java.awt.Color(255, 204, 204));
 
         tabla.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -197,15 +195,17 @@ public class Ventana extends javax.swing.JFrame {
 
             }
         ));
+        tabla.setEnabled(false);
         jScrollPane3.setViewportView(tabla);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("Texto del archivo");
         jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        jButton1.setBackground(new java.awt.Color(51, 255, 255));
+        jButton1.setBackground(new java.awt.Color(255, 255, 102));
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setText("Tabla de simbolos");
+        jButton1.setText("Generate Symbol Table");
+        jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -213,7 +213,8 @@ public class Ventana extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setText("Analizador Lexico (Tabla de Simbolos)");
+        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel3.setText("Symbol Table");
         jLabel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jButton3.setBackground(new java.awt.Color(51, 255, 255));
@@ -229,11 +230,13 @@ public class Ventana extends javax.swing.JFrame {
         Error.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         Error.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         Error.setForeground(java.awt.Color.blue);
+        Error.setEnabled(false);
         jScrollPane5.setViewportView(Error);
 
-        jButton2.setBackground(new java.awt.Color(51, 255, 255));
+        jButton2.setBackground(new java.awt.Color(255, 102, 102));
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setText("Buscar errores");
+        jButton2.setText("Check Errors");
+        jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -267,10 +270,10 @@ public class Ventana extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(LineaError, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Lineas, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtATexto1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Lineas, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtATexto1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -287,15 +290,18 @@ public class Ventana extends javax.swing.JFrame {
 
         txtATraducido.setColumns(20);
         txtATraducido.setRows(5);
+        txtATraducido.setEnabled(false);
         jScrollPane1.setViewportView(txtATraducido);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setText("Codigo intermedio");
+        jLabel4.setForeground(new java.awt.Color(0, 204, 153));
+        jLabel4.setText("Intermediate Code");
         jLabel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        btnTraducir.setBackground(new java.awt.Color(51, 255, 255));
+        btnTraducir.setBackground(new java.awt.Color(0, 204, 153));
         btnTraducir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnTraducir.setText("Traducir");
+        btnTraducir.setText("Display Intermediate Code");
+        btnTraducir.setBorderPainted(false);
         btnTraducir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTraducirActionPerformed(evt);
@@ -303,140 +309,123 @@ public class Ventana extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setText("Analizador Sintactico y Semantico (Lista de errores)");
+        jLabel5.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel5.setText("Error List");
         jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         txtAJava.setColumns(20);
         txtAJava.setRows(5);
+        txtAJava.setEnabled(false);
         jScrollPane4.setViewportView(txtAJava);
 
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel6.setText("Codigo convertido a Java");
-        jLabel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        btnTraducirAJava.setBackground(new java.awt.Color(51, 255, 255));
+        btnTraducirAJava.setBackground(new java.awt.Color(0, 153, 204));
         btnTraducirAJava.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnTraducirAJava.setText("Traducir");
+        btnTraducirAJava.setText("Translate to Java Code");
+        btnTraducirAJava.setBorderPainted(false);
         btnTraducirAJava.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTraducirAJavaActionPerformed(evt);
             }
         });
 
-        btnCompilarYcorrer1.setBackground(new java.awt.Color(51, 255, 255));
-        btnCompilarYcorrer1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnCompilarYcorrer1.setText("Compilar y correr");
-        btnCompilarYcorrer1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompilarYcorrer1ActionPerformed(evt);
-            }
-        });
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel7.setText("Java Code");
+        jLabel7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(513, 513, 513)
-                        .addComponent(jLabel3)
-                        .addGap(173, 173, 173)
-                        .addComponent(jLabel4))
-                    .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnCompilarYcorrer1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(panel1Layout.createSequentialGroup()
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel5)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(153, 153, 153)
-                        .addComponent(btnTraducir, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)))
-                .addGap(43, 43, 43)
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(jLabel2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addComponent(jLabel6))
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel3)
+                        .addGap(191, 191, 191)
+                        .addComponent(jLabel4)
+                        .addGap(213, 213, 213)
+                        .addComponent(jLabel7)
+                        .addGap(207, 207, 207)
+                        .addComponent(jLabel5))
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(btnTraducirAJava, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
-            .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel1Layout.createSequentialGroup()
-                    .addGap(55, 55, 55)
-                    .addComponent(jLabel2)
-                    .addGap(597, 1401, Short.MAX_VALUE)))
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                            .addComponent(btnTraducir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                            .addComponent(btnTraducirAJava, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(22, 22, 22)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel3)))
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addGap(9, 9, 9)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel5))
-                    .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnTraducirAJava, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnTraducir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCompilarYcorrer1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel2)
-                    .addContainerGap(613, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane5))
+                .addGap(7, 7, 7)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTraducir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTraducirAJava, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
+
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setText("COMPILER TO JAVA");
+        jLabel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(652, 652, 652))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -837,35 +826,6 @@ public class Ventana extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnTraducirAJavaActionPerformed
-
-    private void btnCompilarYcorrer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompilarYcorrer1ActionPerformed
-
-        if (esCompilable) {
-      
-            try {
-             
-                //compilacion
-                String rutaBat = "compilacion\\build.bat";
-
-                // Crear el proceso para ejecutar el archivo .bat
-                ProcessBuilder pb = new ProcessBuilder("cmd", "/c","start", rutaBat);
-
-                // Iniciar el proceso
-                Process proceso = pb.start();
-//                proceso.getOutputStream().close();
-
-                // Esperar a que el proceso termine (opcional)
-//                int exitCode = proceso.waitFor();
-
-                // Imprimir el código de salida (0 indica éxito)
-//                System.out.println("Código de salida: " + exitCode);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            } 
-        }
-
-    }//GEN-LAST:event_btnCompilarYcorrer1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jMenuItem1ActionPerformed
         // Se crea un jfilechooser
@@ -2185,7 +2145,6 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JEditorPane Error;
     private javax.swing.JEditorPane LineaError;
     private javax.swing.JEditorPane Lineas;
-    private javax.swing.JButton btnCompilarYcorrer1;
     private javax.swing.JButton btnTraducir;
     private javax.swing.JButton btnTraducirAJava;
     private javax.swing.JButton jButton1;
@@ -2196,6 +2155,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
