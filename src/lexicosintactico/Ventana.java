@@ -75,8 +75,6 @@ public class Ventana extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         txtATexto1 = new javax.swing.JEditorPane();
-        Lineas = new javax.swing.JEditorPane();
-        LineaError = new javax.swing.JEditorPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtATraducido = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
@@ -254,35 +252,19 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
-        Lineas.setEditable(false);
-        Lineas.setText("1");
-        Lineas.setOpaque(false);
-
-        LineaError.setEditable(false);
-        LineaError.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        LineaError.setForeground(java.awt.Color.red);
-        LineaError.setToolTipText("");
-        LineaError.setOpaque(false);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(LineaError, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Lineas, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtATexto1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(txtATexto1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Lineas)
-            .addComponent(LineaError)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(txtATexto1, javax.swing.GroupLayout.PREFERRED_SIZE, 712, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(txtATexto1, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -782,7 +764,7 @@ public class Ventana extends javax.swing.JFrame {
             }
 
         }
-        
+
         if (!txtAJava.getText().isEmpty()) {
             String path = "compilacion\\" + nombreArchivo + ".java";
             String pathBuild = "compilacion\\build.bat";
@@ -817,8 +799,8 @@ public class Ventana extends javax.swing.JFrame {
 
                 System.out.println("Se ha creado correctamente.");
                 esCompilable=true;
-                
-                
+
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -884,7 +866,6 @@ public class Ventana extends javax.swing.JFrame {
             for (int i = 1; i <= contador; i++) {
                 Text += i + "\n";
             }
-            Lineas.setText(Text);
 
             // contarCaracteres(lectura);//Mando llamar el metodo de contar caracteres
             // mayusculasyminusculas(lectura);
@@ -1154,7 +1135,7 @@ public class Ventana extends javax.swing.JFrame {
                                     for (int j = 1; j < i; j++) {
                                         txt += "\n";
                                     }
-                                    LineaError.setText(txt + " ¡!");
+
                                     errores = 1;
                                     break;
                                 }
@@ -1175,7 +1156,7 @@ public class Ventana extends javax.swing.JFrame {
                                     for (int j = 1; j < i; j++) {
                                         txt += "\n";
                                     }
-                                    LineaError.setText(txt + " ¡!");
+
                                     errores = 1;
                                     break;
                                 }
@@ -1196,7 +1177,7 @@ public class Ventana extends javax.swing.JFrame {
                                     for (int j = 1; j < i; j++) {
                                         txt += "\n";
                                     }
-                                    LineaError.setText(txt + " ¡!");
+
                                     errores = 1;
                                     break;
                                 }
@@ -1217,7 +1198,7 @@ public class Ventana extends javax.swing.JFrame {
                                     for (int j = 1; j < i; j++) {
                                         txt += "\n";
                                     }
-                                    LineaError.setText(txt + " ¡!");
+
                                     errores = 1;
                                     break;
                                 }
@@ -1248,7 +1229,7 @@ public class Ventana extends javax.swing.JFrame {
                                         for (int j = 1; j < i; j++) {
                                             txt += "\n";
                                         }
-                                        LineaError.setText(txt + " ¡!");
+
                                         errores = 1;
                                         break;
                                     }
@@ -1261,7 +1242,7 @@ public class Ventana extends javax.swing.JFrame {
                                         for (int j = 1; j < i; j++) {
                                             txt += "\n";
                                         }
-                                        LineaError.setText(txt + " ¡!");
+
                                         errores = 1;
                                         break;
                                     }
@@ -1282,7 +1263,7 @@ public class Ventana extends javax.swing.JFrame {
                                             for (int j = 1; j < i; j++) {
                                                 txt += "\n";
                                             }
-                                            LineaError.setText(txt + " ¡!");
+
                                             errores = 1;
                                             break;
                                         }
@@ -1295,7 +1276,7 @@ public class Ventana extends javax.swing.JFrame {
                                             for (int j = 1; j < i; j++) {
                                                 txt += "\n";
                                             }
-                                            LineaError.setText(txt + " ¡!");
+
                                             errores = 1;
                                             break;
                                         }
@@ -1312,7 +1293,7 @@ public class Ventana extends javax.swing.JFrame {
                                         for (int j = 1; j < i; j++) {
                                             txt += "\n";
                                         }
-                                        LineaError.setText(txt + " ¡!");
+
                                         errores = 1;
                                         break;
                                     }
@@ -1323,7 +1304,7 @@ public class Ventana extends javax.swing.JFrame {
                                     for (int j = 1; j < i; j++) {
                                         txt += "\n";
                                     }
-                                    LineaError.setText(txt + " ¡!");
+
                                     errores = 1;
                                     break;
                                 }
@@ -1339,7 +1320,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1349,7 +1330,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1359,7 +1340,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1370,7 +1351,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1381,7 +1362,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1391,7 +1372,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         break;
                     }
                     if (token.contains("CUANDO")) {
@@ -1400,7 +1381,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1411,7 +1392,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1422,7 +1403,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     } else {
@@ -1431,7 +1412,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1499,7 +1480,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1509,7 +1490,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1519,7 +1500,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1529,7 +1510,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1539,7 +1520,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1549,7 +1530,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1559,7 +1540,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1569,7 +1550,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1579,7 +1560,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     } else {
@@ -1588,7 +1569,7 @@ public class Ventana extends javax.swing.JFrame {
                         for (int j = 1; j < i; j++) {
                             txt += "\n";
                         }
-                        LineaError.setText(txt + " ¡!");
+
                         errores = 1;
                         break;
                     }
@@ -1600,7 +1581,7 @@ public class Ventana extends javax.swing.JFrame {
                 for (int j = 1; j < 1; j++) {
                     txt += "\n";
                 }
-                LineaError.setText(txt + " ¡!");
+
                 errores = 1;
             }
         }
@@ -1614,7 +1595,6 @@ public class Ventana extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton3ActionPerformed
         txtATexto1.setText("");
-        LineaError.setText("");
         Error.setText("");
         txtATraducido.setText("");
         txtAJava.setText("");
@@ -1634,7 +1614,6 @@ public class Ventana extends javax.swing.JFrame {
     private void txtATexto1KeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtATexto1KeyPressed
         StringTokenizer st = new StringTokenizer(txtATexto1.getText(), "\n", true);
         String txt = "", token;
-        LineaError.setText("");
         Error.setText("");
         cont = 1;
 
@@ -1648,7 +1627,7 @@ public class Ventana extends javax.swing.JFrame {
         for (int i = 1; i <= cont; i++) {
             txt += i + "\n";
         }
-        Lineas.setText(txt);
+        // Lineas.setText(txt);
     }// GEN-LAST:event_txtATexto1KeyPressed
 
     private void txtATexto1KeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtATexto1KeyReleased
@@ -1666,7 +1645,7 @@ public class Ventana extends javax.swing.JFrame {
         for (int i = 1; i <= cont; i++) {
             txt += i + "\n";
         }
-        Lineas.setText(txt);
+        // Lineas.setText(txt);
     }// GEN-LAST:event_txtATexto1KeyReleased
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -1806,7 +1785,7 @@ public class Ventana extends javax.swing.JFrame {
 
             /*
              * if(token1.matches(start2)){
-             * 
+             *
              * String a=txtATraducido.getText()+"\nFOR ";
              * txtATraducido.setText(a);
              * StringTokenizer st2= new StringTokenizer(token1,"()");
@@ -1961,7 +1940,7 @@ public class Ventana extends javax.swing.JFrame {
 
                         String a = txtATraducido.getText() + "\nPRINT  ";
                         a = a.replace('#', '"');
-                        //SEND 
+                        //SEND
                         txtATraducido.setText(a);
                     }
                     if (tuken.contains("+")) {
@@ -2143,8 +2122,6 @@ public class Ventana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JEditorPane Error;
-    private javax.swing.JEditorPane LineaError;
-    private javax.swing.JEditorPane Lineas;
     private javax.swing.JButton btnTraducir;
     private javax.swing.JButton btnTraducirAJava;
     private javax.swing.JButton jButton1;
