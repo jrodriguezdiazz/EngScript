@@ -149,7 +149,7 @@ public class Ventana extends javax.swing.JFrame {
     });
 
     txtATexto1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-    txtATexto1.setText("Factorial INICIO{\n\n\nNUM numero,factorial,contador,aux;\nnumero=0;\nfactorial=0;\ncontador=0;\naux=0;\n\nESCRIBIR(#Progama que calcula el factorial de un numero#);\nnumero=5;\n\nSI(numero<0){\nESCRIBIR(#No se puede calcular el factorial de un numero negativo#);\nFSI}\nSI(numero=0){\nESCRIBIR(#El factorial de 0 es 1#);\nFSI}\nSI(numero>0){\nfactorial=1;\ncontador=1;\naux=numero+1;\n\nCUANDO(contador<aux){\nfactorial=factorial*contador;\ncontador=contador+1;\n\nFCUANDO}\n\n\nFSI}\nESCRIBIR(#El factorial de #+numero+# es #+factorial);\n\nFINAL}\n\n\n\n\n");
+    txtATexto1.setText("");
     txtATexto1.addKeyListener(new java.awt.event.KeyAdapter() {
       public void keyPressed(java.awt.event.KeyEvent evt) {
         txtATexto1KeyPressed(evt);
@@ -336,9 +336,9 @@ public class Ventana extends javax.swing.JFrame {
       num = "((\\d)+)",
       dec = "((\\d)+(\\.)(\\d)+)",
       text = "((((#)[.\\W\\w\\s]*(#))|(" + id + "))((\\s)*(\\+)((\\s)*((#)[.\\W\\w\\s]*(#))|(" + id + ")))*)",
-      send = "((\\s)*ESCRIBIR(\\s)*(\\()(\\s)*((((#)[.\\W\\w\\s]*(#))|(" + id +
+      send = "((\\s)*WRITE(\\s)*(\\()(\\s)*((((#)[.\\W\\w\\s]*(#))|(" + id +
       "))((\\s)*(\\+)((\\s)*((#)[.\\W\\w\\s]*(#))|(" + id + ")))*)(\\s)*(\\))(\\s)*(;))",
-      take = "((\\s)*LEER(\\s)*(\\()(\\s)*((((#)[.\\W\\w\\s]*(#))|(" + id +
+      take = "((\\s)*READ(\\s)*(\\()(\\s)*((((#)[.\\W\\w\\s]*(#))|(" + id +
       "))((\\s)*(\\+)((\\s)*((#)[.\\W\\w\\s]*(#))|(" + id + ")))*)(\\s)*(\\))(\\s)*(;))",
       operaciones = "((" + id + "|" + num + "|" + dec + ")(\\s)*([+-/*](\\s)*(" + id + "|" + num + "|" + dec +
       "))+)",
@@ -351,22 +351,22 @@ public class Ventana extends javax.swing.JFrame {
       ")))*",
       var = "((\\s)*((NUM)|(DNUM)|(WORD))(\\b)(\\s)*(" + id + "|" + defValVar + ")((\\s)*(,(\\s)*(" + id + "|" +
       defValVar + ")))*(\\s)*(;))",
-      main = "((\\s)*" + id + "txtATraducidoINICIO(\\s)*(\\{)[.\\W\\w\\s]*(FINAL(\\s)*(\\})(\\s)*)$)",
-      main2 = "((\\s)*" + id + "(\\b)(\\s)*INICIO(\\s)*(\\{))",
-      main3 = "((\\s)*FINAL(\\s)*(\\})(\\s)*)",
-      start2 = "((\\s)*DESDE(\\b)(\\s)*(" + id + "|" + num + ")(\\b)(\\s)*(=)*(" + id + "|" + num +
+      main = "((\\s)*" + id + "txtATraducidoINICIO(\\s)*(\\{)[.\\W\\w\\s]*(END(\\s)*(\\})(\\s)*)$)",
+      main2 = "((\\s)*" + id + "(\\b)(\\s)*START(\\s)*(\\{))",
+      main3 = "((\\s)*END(\\s)*(\\})(\\s)*)",
+      start2 = "((\\s)*FROM(\\b)(\\s)*(" + id + "|" + num + ")(\\b)(\\s)*(=)*(" + id + "|" + num +
       ")(\\b)(\\s)*(PASO)(\\b)(\\s)*" + num + "(\\s)*[+-]?(\\s)*(\\b)(TO)(\\b)(\\s)*(" + id + "|" +
       num + ")(\\s)*(\\{))",
-      foresito = "((\\s)*FOR(\\b)(\\s)*(" + id + "|" + num + ")(\\b)(\\s)*(HASTA)(\\b)(\\s)*(" + id + "|" + num +
+      foresito = "((\\s)*FOR(\\b)(\\s)*(" + id + "|" + num + ")(\\b)(\\s)*(UNTIL)(\\b)(\\s)*(" + id + "|" + num +
       ")(\\s)*)",
-      start3 = "((\\s)*FDESDE(\\s)*(\\}))",
-      when2 = "((\\s)*CUANDO(\\s)*(\\()(\\s)*" + condicion + "(\\s)*(\\))(\\s)*(\\{))",
-      when3 = "((\\s)*FCUANDO(\\s)*(\\}))",
-      it2 = "((\\s)*SI(\\s)*(\\()(\\s)*" + condicion + "(\\s)*(\\))(\\s)*(\\{))",
-      it3 = "((\\s)*FSI(\\s)*(\\}))",
+      start3 = "((\\s)*FFROM(\\s)*(\\}))",
+      when2 = "((\\s)*WHEN(\\s)*(\\()(\\s)*" + condicion + "(\\s)*(\\))(\\s)*(\\{))",
+      when3 = "((\\s)*FWHEN(\\s)*(\\}))",
+      it2 = "((\\s)*IF(\\s)*(\\()(\\s)*" + condicion + "(\\s)*(\\))(\\s)*(\\{))",
+      it3 = "((\\s)*FIF(\\s)*(\\}))",
       entero = "[0-9]*",
       step = "(PASO)(\\b)(\\s)*" + num + "(\\s)*[+-]?(\\s)*(\\b)",
-      to = "HASTA(\\b)(\\s)*(" + id + "|" + num + ")(\\s)*(\\{)",
+      to = "UNTIL(\\b)(\\s)*(" + id + "|" + num + ")(\\s)*(\\{)",
       decimal = "[0-9]*.[0-9]+";
 
     StringTokenizer st = new StringTokenizer(txtATexto1.getText(), "\n");
@@ -383,11 +383,11 @@ public class Ventana extends javax.swing.JFrame {
           String testo = "";
           testo = testo + txtAJava.getText();
           tokinn = tokin.nextToken();
-          if (tokinn.contains("INICIO")) {
+          if (tokinn.contains("START")) {
             txtAJava.setText(testo + "REM ");
 
           }
-          if (tokinn.matches(id) && tokinn.contains("INICIO") == false && tokinn.contains("{") == false) {
+          if (tokinn.matches(id) && tokinn.contains("START") == false && tokinn.contains("{") == false) {
             String txt = "\nimport java.util.Scanner;";
             String txt2 = "static class lector{\n" +
               "        static Scanner sc = new Scanner(System.in); \n" +
@@ -502,7 +502,7 @@ public class Ventana extends javax.swing.JFrame {
             }
           }
 
-          if (tuken.contains("CUANDO")) {
+          if (tuken.contains("WHEN")) {
             String a = txtAJava.getText() + "\nwhile( ";
             txtAJava.setText(a);
 
@@ -542,7 +542,7 @@ public class Ventana extends javax.swing.JFrame {
             }
           }
 
-          if (tuken.contains("SI")) {
+          if (tuken.contains("IF")) {
             String a = txtAJava.getText() + "\nif(";
             txtAJava.setText(a);
 
@@ -566,8 +566,8 @@ public class Ventana extends javax.swing.JFrame {
         StringTokenizer st2 = new StringTokenizer(token1, "()");
         while (st2.hasMoreTokens()) {
           String tuken = st2.nextToken();
-          if (tuken.contains("LEER")) {
-            String a = txtAJava.getText() + "\n" + tuken.replace("LEER", "lector.leer(");
+          if (tuken.contains("READ")) {
+            String a = txtAJava.getText() + "\n" + tuken.replace("READ", "lector.leer(");
             a = a.replace('#', '"');
             txtAJava.setText(a);
           }
@@ -595,7 +595,7 @@ public class Ventana extends javax.swing.JFrame {
             txtAJava.setText(a);
 
           }
-          if (tuken.contains("LEER") == false && tuken.contains("+") == false && tuken.contains(";") == false) {
+          if (tuken.contains("READ") == false && tuken.contains("+") == false && tuken.contains(";") == false) {
             String a = txtAJava.getText() + tuken;
             a = a.replace('#', '"');
             txtAJava.setText(a);
@@ -607,7 +607,7 @@ public class Ventana extends javax.swing.JFrame {
         StringTokenizer st2 = new StringTokenizer(token1, "()");
         while (st2.hasMoreTokens()) {
           String tuken = st2.nextToken();
-          if (tuken.contains("ESCRIBIR")) {
+          if (tuken.contains("WRITE")) {
 
             String a = txtAJava.getText() + "\nSystem.out.println(";
             a = a.replace('#', '"');
@@ -636,7 +636,7 @@ public class Ventana extends javax.swing.JFrame {
             a = a.replace("#", "\"");
             txtAJava.setText(a);
           }
-          if (tuken.contains("ESCRIBIR") == false && tuken.contains("+") == false && tuken.contains(";") == false) {
+          if (tuken.contains("WRITE") == false && tuken.contains("+") == false && tuken.contains(";") == false) {
             String a = txtAJava.getText() + tuken;
             a = a.replace("#", "\"") + "";
 
@@ -665,7 +665,7 @@ public class Ventana extends javax.swing.JFrame {
         while (tuk.hasMoreTokens()) {
           tokesito = tuk.nextToken();
           String a = txtAJava.getText() + "\n";
-          tokesito = tokesito.replace("CUANDO", "FOR");
+          tokesito = tokesito.replace("WHEN", "FOR");
           tokesito = tokesito.replaceAll(step, " ");
           tokesito = tokesito.replace("{", "\n");
           texto += a + tokesito;
@@ -797,25 +797,25 @@ public class Ventana extends javax.swing.JFrame {
     HashMap < String, Integer > num = new HashMap < > ();
     LinkedList < String > texto = new LinkedList < > ();
 
-    r.put("INICIO", 0);
-    r.put("FINAL", 0);
+    r.put("START", 0);
+    r.put("END", 0);
     r.put("WORD", 0);
     r.put("ALFA", 0);
     r.put("NUM", 0);
     r.put("DNUM", 0);
     r.put("BOOL", 0);
     r.put("LNUM", 0);
-    r.put("LEER", 0);
-    r.put("ESCRIBIR", 0);
-    r.put("CUANDO", 0);
-    r.put("SI", 0);
+    r.put("READ", 0);
+    r.put("WRITE", 0);
+    r.put("WHEN", 0);
+    r.put("IF", 0);
     r.put("IS", 0);
-    r.put("DESDE", 0);
+    r.put("FROM", 0);
     r.put("PASO", 0);
-    r.put("HASTA", 0);
-    r.put("FDESDE", 0);
-    r.put("FCUANDO", 0);
-    r.put("FSI", 0);
+    r.put("UNTIL", 0);
+    r.put("FFROM", 0);
+    r.put("FWHEN", 0);
+    r.put("FIF", 0);
 
     op.put("/", 0);
     op.put("*", 0);
@@ -973,10 +973,10 @@ public class Ventana extends javax.swing.JFrame {
       num = "((\\d)+)",
       dec = "((\\d)+(\\.)(\\d)+)",
       text = "((((#)[.\\W\\w\\s]*(#))|(" + id + "))((\\s)*(\\+)((\\s)*((#)[.\\W\\w\\s]*(#))|(" + id + ")))*)",
-      send = "((\\s)*ESCRIBIR(\\s)*(\\()(\\s)*((((#)[.\\W\\w\\s]*(#))|(" + id +
+      send = "((\\s)*WRITE(\\s)*(\\()(\\s)*((((#)[.\\W\\w\\s]*(#))|(" + id +
       "))((\\s)*(\\+)((\\s)*((#)[.\\W\\w\\s]*(#))|(" + id + ")))*)(\\s)*(\\))(\\s)*(;))",
       // take = "((\\s)*TAKE(\\b)(\\s)*"+id+"((\\s)*(,(\\s)*"+id+"))*(\\s)*(;))",
-      take = "((\\s)*LEER(\\s)*(\\()(\\s)*((((#)[.\\W\\w\\s]*(#))|(" + id +
+      take = "((\\s)*READ(\\s)*(\\()(\\s)*((((#)[.\\W\\w\\s]*(#))|(" + id +
       "))((\\s)*(\\+)((\\s)*((#)[.\\W\\w\\s]*(#))|(" + id + ")))*)(\\s)*(\\))(\\s)*(;))",
       operaciones = "((" + id + "|" + num + "|" + dec + ")(\\s)*([+-/*](\\s)*(" + id + "|" + num + "|" + dec +
       "))+)",
@@ -989,17 +989,17 @@ public class Ventana extends javax.swing.JFrame {
       ")))*",
       var = "((\\s)*((NUM)|(DNUM)|(WORD))(\\b)(\\s)*(" + id + "|" + defValVar + ")((\\s)*(,(\\s)*(" + id + "|" +
       defValVar + ")))*(\\s)*(;))",
-      main = "((\\s)*" + id + "(\\b)(\\s)*INICIO(\\s)*(\\{)[.\\W\\w\\s]*(FINAL(\\s)*(\\})(\\s)*)$)",
-      main2 = "((\\s)*" + id + "(\\b)(\\s)*INICIO(\\s)*(\\{))",
-      main3 = "((\\s)*FINAL(\\s)*(\\})(\\s)*)",
-      start2 = "((\\s)*DESDE(\\b)(\\s)*(" + id + "|" + num + ")(\\b)(\\s)*(=)*(" + id + "|" + num +
-      ")(\\b)(\\s)*(HASTA)(\\b)(\\s)*" + num + "(\\s)*[+-]?(\\s)*(\\b)(TO)(\\b)(\\s)*(" + id + "|" +
+      main = "((\\s)*" + id + "(\\b)(\\s)*START(\\s)*(\\{)[.\\W\\w\\s]*(END(\\s)*(\\})(\\s)*)$)",
+      main2 = "((\\s)*" + id + "(\\b)(\\s)*START(\\s)*(\\{))",
+      main3 = "((\\s)*END(\\s)*(\\})(\\s)*)",
+      start2 = "((\\s)*FROM(\\b)(\\s)*(" + id + "|" + num + ")(\\b)(\\s)*(=)*(" + id + "|" + num +
+      ")(\\b)(\\s)*(UNTIL)(\\b)(\\s)*" + num + "(\\s)*[+-]?(\\s)*(\\b)(TO)(\\b)(\\s)*(" + id + "|" +
       num + ")(\\s)*(\\{))",
-      start3 = "((\\s)*FDESDE(\\s)*(\\}))",
-      when2 = "((\\s)*CUANDO(\\s)*(\\()(\\s)*" + condicion + "(\\s)*(\\))(\\s)*(\\{))",
-      when3 = "((\\s)*FCUANDO(\\s)*(\\}))",
-      it2 = "((\\s)*SI(\\s)*(\\()(\\s)*" + condicion + "(\\s)*(\\))(\\s)*(\\{))",
-      it3 = "((\\s)*FSI(\\s)*(\\}))",
+      start3 = "((\\s)*FFROM(\\s)*(\\}))",
+      when2 = "((\\s)*WHEN(\\s)*(\\()(\\s)*" + condicion + "(\\s)*(\\))(\\s)*(\\{))",
+      when3 = "((\\s)*FWHEN(\\s)*(\\}))",
+      it2 = "((\\s)*IF(\\s)*(\\()(\\s)*" + condicion + "(\\s)*(\\))(\\s)*(\\{))",
+      it3 = "((\\s)*FIF(\\s)*(\\}))",
       entero = "[0-9]*",
       decimal = "[0-9]*.[0-9]+";
     // BEGIN END COMPLETE START TO STOP STEP
@@ -1258,9 +1258,9 @@ public class Ventana extends javax.swing.JFrame {
             }
           }
         } else {
-          if (token.contains("ESCRIBIR")) {
+          if (token.contains("WRITE")) {
             txtATraducido.setText("PRINT");
-            Error.setText("Error al declarar sentencia ESCRIBIR; en la linea " + i + ": \n" +
+            Error.setText("Error al declarar sentencia WRITE; en la linea " + i + ": \n" +
               "\n" + token);
             errores = 1;
             for (int j = 1; j < i; j++) {
@@ -1280,8 +1280,8 @@ public class Ventana extends javax.swing.JFrame {
             errores = 1;
             break;
           }
-          if (token.contains("LEER")) {
-            Error.setText("Error en lectura de valor LEER en la linea " + i + ": \n" +
+          if (token.contains("READ")) {
+            Error.setText("Error en lectura de valor READ en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1290,9 +1290,9 @@ public class Ventana extends javax.swing.JFrame {
             errores = 1;
             break;
           }
-          if (token.contains("FDESDE}")) {
+          if (token.contains("FFROM}")) {
 
-            Error.setText("Cierre de Ciclo DESDE incorrecto  en la linea " + i + ": \n" +
+            Error.setText("Cierre de Ciclo FROM incorrecto  en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1301,9 +1301,9 @@ public class Ventana extends javax.swing.JFrame {
             errores = 1;
             break;
           }
-          if (token.contains("DESDE")) {
+          if (token.contains("FROM")) {
 
-            Error.setText("Inicio de Ciclo DESDE incorrecto  en la linea " + i + ": \n" +
+            Error.setText("Inicio de Ciclo FROM incorrecto  en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1312,8 +1312,8 @@ public class Ventana extends javax.swing.JFrame {
             errores = 1;
             break;
           }
-          if (token.contains("FCUANDO")) {
-            Error.setText("Cierre de ciclo CUANDO incorrecto en la linea " + i + ": \n" +
+          if (token.contains("FWHEN")) {
+            Error.setText("Cierre de ciclo WHEN incorrecto en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1321,19 +1321,8 @@ public class Ventana extends javax.swing.JFrame {
 
             break;
           }
-          if (token.contains("CUANDO")) {
-            Error.setText("Inicio de ciclo CUANDO incorrecto en la linea " + i + ": \n" +
-              "\n" + token);
-            for (int j = 1; j < i; j++) {
-              txt += "\n";
-            }
-
-            errores = 1;
-            break;
-          }
-          if (token.contains("FSI")) {
-
-            Error.setText("Cierre de condicion SI incorrecto en la linea " + i + ": \n" +
+          if (token.contains("WHEN")) {
+            Error.setText("Inicio de ciclo WHEN incorrecto en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1342,9 +1331,20 @@ public class Ventana extends javax.swing.JFrame {
             errores = 1;
             break;
           }
-          if (token.contains("SI")) {
+          if (token.contains("FIF")) {
 
-            Error.setText("Inicio de SI incorrecto; en la linea " + i + ": \n" +
+            Error.setText("Cierre de condicion IF incorrecto en la linea " + i + ": \n" +
+              "\n" + token);
+            for (int j = 1; j < i; j++) {
+              txt += "\n";
+            }
+
+            errores = 1;
+            break;
+          }
+          if (token.contains("IF")) {
+
+            Error.setText("Inicio de IF incorrecto; en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1420,8 +1420,8 @@ public class Ventana extends javax.swing.JFrame {
             eB = 1;
           }
         } else {
-          if (token.contains("ESCRIBIR")) {
-            Error.setText("Error al declarar sentencia ESCRIBIR en la linea " + i + ": \n" +
+          if (token.contains("WRITE")) {
+            Error.setText("Error al declarar sentencia WRITE en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1440,8 +1440,8 @@ public class Ventana extends javax.swing.JFrame {
             errores = 1;
             break;
           }
-          if (token.contains("LEER")) {
-            Error.setText("Error en lectura de valor LEER en la linea " + i + ": \n" +
+          if (token.contains("READ")) {
+            Error.setText("Error en lectura de valor READ en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1450,8 +1450,8 @@ public class Ventana extends javax.swing.JFrame {
             errores = 1;
             break;
           }
-          if (token.contains("FDESDE}")) {
-            Error.setText("Cierre de Ciclo FDESDE incorrecto en la linea " + i + ": \n" +
+          if (token.contains("FFROM}")) {
+            Error.setText("Cierre de Ciclo FFROM incorrecto en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1460,8 +1460,8 @@ public class Ventana extends javax.swing.JFrame {
             errores = 1;
             break;
           }
-          if (token.contains("DESDE")) {
-            Error.setText("Inicio de Ciclo DESDE incorrecto  en la linea " + i + ": \n" +
+          if (token.contains("FROM")) {
+            Error.setText("Inicio de Ciclo FROM incorrecto  en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1470,8 +1470,8 @@ public class Ventana extends javax.swing.JFrame {
             errores = 1;
             break;
           }
-          if (token.contains("FCUANDO")) {
-            Error.setText("Cierre de ciclo CUANDO incorrecto  en la linea " + i + ": \n" +
+          if (token.contains("FWHEN")) {
+            Error.setText("Cierre de ciclo WHEN incorrecto  en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1480,8 +1480,8 @@ public class Ventana extends javax.swing.JFrame {
             errores = 1;
             break;
           }
-          if (token.contains("CUANDO")) {
-            Error.setText("Inicio de ciclo CUANDO incorrecto  en la linea " + i + ": \n" +
+          if (token.contains("WHEN")) {
+            Error.setText("Inicio de ciclo WHEN incorrecto  en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1490,8 +1490,8 @@ public class Ventana extends javax.swing.JFrame {
             errores = 1;
             break;
           }
-          if (token.contains("FSI")) {
-            Error.setText("Cierre de condicion FSI incorrecto; en la linea " + i + ": \n" +
+          if (token.contains("FIF")) {
+            Error.setText("Cierre de condicion FIF incorrecto; en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1500,8 +1500,8 @@ public class Ventana extends javax.swing.JFrame {
             errores = 1;
             break;
           }
-          if (token.contains("SI")) {
-            Error.setText("Inicio de SI incorrecto en la linea " + i + ": \n" +
+          if (token.contains("IF")) {
+            Error.setText("Inicio de IF incorrecto en la linea " + i + ": \n" +
               "\n" + token);
             for (int j = 1; j < i; j++) {
               txt += "\n";
@@ -1609,10 +1609,10 @@ public class Ventana extends javax.swing.JFrame {
       num = "((\\d)+)",
       dec = "((\\d)+(\\.)(\\d)+)",
       text = "((((#)[.\\W\\w\\s]*(#))|(" + id + "))((\\s)*(\\+)((\\s)*((#)[.\\W\\w\\s]*(#))|(" + id + ")))*)",
-      send = "((\\s)*ESCRIBIR(\\s)*(\\()(\\s)*((((#)[.\\W\\w\\s]*(#))|(" + id +
+      send = "((\\s)*WRITE(\\s)*(\\()(\\s)*((((#)[.\\W\\w\\s]*(#))|(" + id +
       "))((\\s)*(\\+)((\\s)*((#)[.\\W\\w\\s]*(#))|(" + id + ")))*)(\\s)*(\\))(\\s)*(;))",
       // take = "((\\s)*TAKE(\\b)(\\s)*"+id+"((\\s)*(,(\\s)*"+id+"))*(\\s)*(;))",
-      take = "((\\s)*LEER(\\s)*(\\()(\\s)*((((#)[.\\W\\w\\s]*(#))|(" + id +
+      take = "((\\s)*READ(\\s)*(\\()(\\s)*((((#)[.\\W\\w\\s]*(#))|(" + id +
       "))((\\s)*(\\+)((\\s)*((#)[.\\W\\w\\s]*(#))|(" + id + ")))*)(\\s)*(\\))(\\s)*(;))",
       operaciones = "((" + id + "|" + num + "|" + dec + ")(\\s)*([+-/*](\\s)*(" + id + "|" + num + "|" + dec +
       "))+)",
@@ -1625,24 +1625,24 @@ public class Ventana extends javax.swing.JFrame {
       ")))*",
       var = "((\\s)*((NUM)|(DNUM)|(WORD))(\\b)(\\s)*(" + id + "|" + defValVar + ")((\\s)*(,(\\s)*(" + id + "|" +
       defValVar + ")))*(\\s)*(;))",
-      main = "((\\s)*" + id + "txtATraducidoINICIO(\\s)*(\\{)[.\\W\\w\\s]*(FINAL(\\s)*(\\})(\\s)*)$)",
-      main2 = "((\\s)*" + id + "(\\b)(\\s)*INICIO(\\s)*(\\{))",
-      main3 = "((\\s)*FINAL(\\s)*(\\})(\\s)*)",
+      main = "((\\s)*" + id + "txtATraducidoINICIO(\\s)*(\\{)[.\\W\\w\\s]*(END(\\s)*(\\})(\\s)*)$)",
+      main2 = "((\\s)*" + id + "(\\b)(\\s)*START(\\s)*(\\{))",
+      main3 = "((\\s)*END(\\s)*(\\})(\\s)*)",
       // BEGIN END TAKE START TO STOP STEP
 
-      start2 = "((\\s)*DESDE(\\b)(\\s)*(" + id + "|" + num + ")(\\b)(\\s)*(=)*(" + id + "|" + num +
+      start2 = "((\\s)*FROM(\\b)(\\s)*(" + id + "|" + num + ")(\\b)(\\s)*(=)*(" + id + "|" + num +
       ")(\\b)(\\s)*(PASO)(\\b)(\\s)*" + num + "(\\s)*[+-]?(\\s)*(\\b)(TO)(\\b)(\\s)*(" + id + "|" +
       num + ")(\\s)*(\\{))",
-      foresito = "((\\s)*FOR(\\b)(\\s)*(" + id + "|" + num + ")(\\b)(\\s)*(HASTA)(\\b)(\\s)*(" + id + "|" + num +
+      foresito = "((\\s)*FOR(\\b)(\\s)*(" + id + "|" + num + ")(\\b)(\\s)*(UNTIL)(\\b)(\\s)*(" + id + "|" + num +
       ")(\\s)*)",
-      start3 = "((\\s)*FDESDE(\\s)*(\\}))",
-      when2 = "((\\s)*CUANDO(\\s)*(\\()(\\s)*" + condicion + "(\\s)*(\\))(\\s)*(\\{))",
-      when3 = "((\\s)*FCUANDO(\\s)*(\\}))",
-      it2 = "((\\s)*SI(\\s)*(\\()(\\s)*" + condicion + "(\\s)*(\\))(\\s)*(\\{))",
-      it3 = "((\\s)*FSI(\\s)*(\\}))",
+      start3 = "((\\s)*FFROM(\\s)*(\\}))",
+      when2 = "((\\s)*WHEN(\\s)*(\\()(\\s)*" + condicion + "(\\s)*(\\))(\\s)*(\\{))",
+      when3 = "((\\s)*FWHEN(\\s)*(\\}))",
+      it2 = "((\\s)*IF(\\s)*(\\()(\\s)*" + condicion + "(\\s)*(\\))(\\s)*(\\{))",
+      it3 = "((\\s)*FIF(\\s)*(\\}))",
       entero = "[0-9]*",
       step = "(PASO)(\\b)(\\s)*" + num + "(\\s)*[+-]?(\\s)*(\\b)",
-      to = "HASTA(\\b)(\\s)*(" + id + "|" + num + ")(\\s)*(\\{)",
+      to = "UNTIL(\\b)(\\s)*(" + id + "|" + num + ")(\\s)*(\\{)",
       decimal = "[0-9]*.[0-9]+";
 
     StringTokenizer st = new StringTokenizer(txtATexto1.getText(), "\n");
@@ -1659,11 +1659,11 @@ public class Ventana extends javax.swing.JFrame {
           String testo = "";
           testo = testo + txtATraducido.getText();
           tokinn = tokin.nextToken();
-          if (tokinn.contains("INICIO")) {
+          if (tokinn.contains("START")) {
             txtATraducido.setText(testo + "REM ");
 
           }
-          if (tokinn.matches(id) && tokinn.contains("INICIO") == false && tokinn.contains("{") == false) {
+          if (tokinn.matches(id) && tokinn.contains("START") == false && tokinn.contains("{") == false) {
             txtATraducido.setText(testo + tokinn + "");
           }
           if (tokinn.contains("{")) {
@@ -1768,7 +1768,7 @@ public class Ventana extends javax.swing.JFrame {
             }
           }
 
-          if (tuken.contains("CUANDO")) {
+          if (tuken.contains("WHEN")) {
             String a = txtATraducido.getText() + "\nWHILE ";
             txtATraducido.setText(a);
             /*
@@ -1812,7 +1812,7 @@ public class Ventana extends javax.swing.JFrame {
             }
           }
 
-          if (tuken.contains("SI")) {
+          if (tuken.contains("IF")) {
             String a = txtATraducido.getText() + "\nIF ";
             txtATraducido.setText(a);
             /*
@@ -1839,7 +1839,7 @@ public class Ventana extends javax.swing.JFrame {
         StringTokenizer st2 = new StringTokenizer(token1, "()");
         while (st2.hasMoreTokens()) {
           String tuken = st2.nextToken();
-          if (tuken.contains("LEER")) {
+          if (tuken.contains("READ")) {
 
             String a = txtATraducido.getText() + "\nINPUT  ";
             a = a.replace('#', '"');
@@ -1869,7 +1869,7 @@ public class Ventana extends javax.swing.JFrame {
             txtATraducido.setText(a);
 
           }
-          if (tuken.contains("LEER") == false && tuken.contains("+") == false &&
+          if (tuken.contains("READ") == false && tuken.contains("+") == false &&
             tuken.contains(";") == false) {
             String a = txtATraducido.getText() + tuken;
             a = a.replace('#', '"');
@@ -1882,7 +1882,7 @@ public class Ventana extends javax.swing.JFrame {
         StringTokenizer st2 = new StringTokenizer(token1, "()");
         while (st2.hasMoreTokens()) {
           String tuken = st2.nextToken();
-          if (tuken.contains("ESCRIBIR")) {
+          if (tuken.contains("WRITE")) {
 
             String a = txtATraducido.getText() + "\nPRINT  ";
             a = a.replace('#', '"');
@@ -1911,7 +1911,7 @@ public class Ventana extends javax.swing.JFrame {
             a = a.replace('#', '"');
             txtATraducido.setText(a);
           }
-          if (tuken.contains("ESCRIBIR") == false && tuken.contains("+") == false &&
+          if (tuken.contains("WRITE") == false && tuken.contains("+") == false &&
             tuken.contains(";") == false) {
             String a = txtATraducido.getText() + tuken;
             a = a.replace('#', '"');
